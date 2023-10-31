@@ -2,6 +2,6 @@ class Person:
      """example
      """
      
-     def __init__(self, name):
+     def __init__(self, name, age):
           self.name = name
-     
+          self.age = age
