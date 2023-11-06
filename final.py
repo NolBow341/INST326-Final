@@ -5,6 +5,7 @@ class Game:
     """
     def calculate_points(self,word):
         """ Calculates the points the user gets based on length of word found
+        created by **Nolan Bowen**
 
         Args:
             word (str): word found by user
