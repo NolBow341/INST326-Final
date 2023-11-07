@@ -14,7 +14,14 @@ class Game:
             str: points based on length of word found
         """
         word_len = len(word)
-        if word_len >= self.word:
-            return(word_len - 2) * 100
-        else:
-            return 0
+        if word_len > 3:
+            points = word_len * 100
+        else: 
+            points = 0
+        return points
+    def __repr__(self):
+        """
+        can use this magic method to show the players name and score that round
+        could evantually implement it to show a high score. **Nolan Bowen**
+        """
+        return f"Player(name:'{self.name}', score:{self.score})"
