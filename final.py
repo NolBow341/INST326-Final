@@ -1,5 +1,14 @@
-class Game:
-     def __init__(self, letters): 
+class Player:
+    """Creates player object. 
+    created by ** Ethan Holley **
+    """
+    def __init__(self,name):
+        self.leadership_board = {}
+        self.name = name
+        self.score = 0
+class Game(Player):
+
+    def __init__(self, letters): 
         self.letters = letters 
         self.valid_words = [] 
         
@@ -40,7 +49,19 @@ class Game:
             points = word_len * 100
         else: 
             points = 0
+        self.leadership_ship[self.name] = points
         return points
+        
+    def leadership_board(self):
+        """ Displays the names and scores of players 
+
+        Returns:
+            str: number that player placed, their name, and their score
+        """
+        ordered_board = sorted(self.leadership.item(), key=lambda x: x[1], reverse=True)
+        for name, score in ordered_board:
+            place += 1
+            return f"{place}. {name} : {score}" 
     def __repr__(self):
         """
         can use this magic method to show the players name and score that round
