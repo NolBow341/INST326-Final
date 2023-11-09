@@ -1,4 +1,26 @@
 class Game:
+     def __init__(self, letters): 
+        self.letters = letters 
+        self.valid_words = [] 
+        
+    def longest_word(self): 
+        """
+    Get the longest word from a player from the list of valid words.
+
+    Returns:
+        str or None: The longest valid word found or None if no valid words.
+    
+    created by ** Cameron Okolita**
+    """
+    
+        
+        if self.valid_words:
+            longest_words = max(self.valid_words, key=lambda x: len(x[0]))
+            return longest_words[0]
+        else:
+            return None  
+    
+    
     """
     features of our game class that allows the user to play
     the anagram game
