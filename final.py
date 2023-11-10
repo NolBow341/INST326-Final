@@ -6,6 +6,7 @@ class Player:
         self.leadership_board = {}
         self.name = name
         self.score = 0
+        self.words = []
 class Game(Player):
 
     def __init__(self, letters): 
@@ -74,7 +75,44 @@ class Game(Player):
             points = 0
         self.leadership_ship[self.name] = points
         return points
+    
+    def print_results(self, player1, player2):
+        """ Prints a detailed breakdown of player 1's and player 2's list of
+        words and points each word is worth. Created by ** Suhas Poturaju **
         
+        Args:
+            player1 (Player): an instance of the Player class playing the game
+            player2 (Player): another instance of the Player class playing the
+                game
+        
+        """
+        for word in player1.words:
+            total1 += calculate_points(word)
+        for word in player2.words:
+            total2 += calculate_points(word)
+            
+        print(f"Player 1: {total1} pts")
+        for word in player1.words:
+            print(f"{word} - {calculate_points(word)}")
+        
+        print("\n---------------------\n")
+        
+        print(f"Player 2: {total2} pts")
+        for word in player2.words:
+            print(f"{word} - {calculate_points(word)}")
+            
+        print("\n---------------------\n")
+
+        
+        if total1 == total2:
+            print("IT'S A DRAW!")
+        elif total1 > total2:
+            print(f"PLAYER 1 WON BY {total1 - total2} PTS!")
+        else:
+            print(f"PLAYER 2 WON BY {total2 - total1} PTS!")
+        
+      
+      
     def leadership_board(self):
         """ Displays the names and scores of players 
 
