@@ -12,6 +12,29 @@ class Game(Player):
         self.letters = letters 
         self.valid_words = [] 
         
+  
+    def is_entry_valid(self, entry):
+        """Check the word entry to make sure its valid.
+        created by ** Matt Andrasik **
+        
+        Args:
+            entry (str): word that the player submits as an entry for points
+            
+        Returns:
+            bool: True if word is valid, False if not.
+        """
+        entry_letters = list(entry)
+        
+        for letter in entry_letters:
+            if entry_letters.count(letter) > self.letters.count(letter):
+                return False
+        
+        if entry in self.valid_words:
+            return True
+        
+        return False
+        
+        
     def longest_word(self): 
         """
     Get the longest word from a player from the list of valid words.
