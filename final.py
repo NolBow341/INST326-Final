@@ -1,3 +1,6 @@
+import random
+import argparse
+
 class Player:
     """Creates player object. 
     created by ** Ethan Holley **
@@ -7,11 +10,34 @@ class Player:
         self.name = name
         self.score = 0
         self.words = []
+        
+    def __repr__(self):
+        return f"Player(name: '{self.name}', score: {self.score})"
+    
 class Game(Player):
-
+    
     def __init__(self, letters): 
         self.letters = letters 
         self.valid_words = [] 
+        
+    def load_valid_words(self,valid_words_file):
+        """  Loads valid words from a text file
+        **Nolan Bowen**
+
+        Args:
+            valid_words_file (str): Path to a text file containing valid words
+                based on scramble
+
+        Returns:
+            list: List of valid words from the text file, if file is not found
+                an empty list is returned
+        """
+        try:
+            with open(valid_words_file, 'r', encoding='utf-8') as file:
+                return [line.strip() for line in file.readlines()]
+        except FileNotFoundError:
+            print( f"Error: File {valid_words_file} not found")
+            return []
         
   
     def is_entry_valid(self, entry):
@@ -66,24 +92,22 @@ class Game(Player):
             word (str): word found by user
 
         Returns:
-            str: points based on length of word found
+            str: points based on length of word found as long as
+                word length is >= 3
         """
         word_len = len(word)
-        if word_len > 3:
-            points = word_len * 100
-        else: 
-            points = 0
-        self.leadership_ship[self.name] = points
+        points = word_len * 100 if word_len >= 3 else 0
+        self.leadership_board[self.name] = points
         return points
     
     def print_results(self, player1, player2):
         """ Prints a detailed breakdown of player 1's and player 2's list of
         words and points each word is worth. Created by ** Suhas Poturaju **
         
+        EDIT THIS FOR ONLY 1 PLAYER 
+        
         Args:
-            player1 (Player): an instance of the Player class playing the game
-            player2 (Player): another instance of the Player class playing the
-                game
+        
         
         """
         for word in player1.words:
@@ -123,9 +147,46 @@ class Game(Player):
         for name, score in ordered_board:
             place += 1
             return f"{place}. {name} : {score}" 
-    def __repr__(self):
+    
+    def play_game(self):
+        """ Method to play the Anagram Game.
+        
+        Args:
+            letters (str): the letters for the game
+            
+            this method initiates the Game with the provided letters and enter
+            word matches until they decide to quit. each word gives points to
+            the player and the game results are returned in the end
         """
-        can use this magic method to show the players name and score that round
-        could evantually implement it to show a high score. **Nolan Bowen**
-        """
-        return f"Player(name:'{self.name}', score:{self.score})"
+        print("Welcome to Anagrams!!")
+        
+        wordlist_file = "letter_scramble.txt"
+        self.letters = random.choice(self.load_valid_words(wordlist_file))
+        
+        print(f"Unscramble the letters: {self.letters}")
+        
+        while True:
+            user_input = input("Enter a word (or 'quit' to end game: )")
+            
+            if user_input == 'quit':
+                break
+            
+            if self.is_entry_valid(user_input):
+                points = self.calculate_points(user_input)
+                self.score += points
+                self.words.append(user_input)
+                print(f"Valid word! {user_input} is worth {points} PTS.
+                      your total score is {self.score}.")
+            else:
+                print("Invalid word. Try again!")
+        print("Game Over. Final score is:")
+        self.print_results()
+        
+def main():
+    # ArgumentParser and creating instance of the game
+
+
+
+if __name__ == "__main__":
+    game_instance = Game("","")
+    game_instance.play_game()
