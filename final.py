@@ -15,11 +15,13 @@ class Player:
         return f"Player(name: '{self.name}', score: {self.score})"
     
 class Game(Player):
-    """ Creates Player 
-
-    ** Cameron Okolita** 
-    """ 
+     
     def __init__(self, letters, valid_words_file):
+        """ Creates Player 
+     
+
+        ** Cameron Okolita** 
+        """ 
         super().__init__("Player 1")
         self.letters = letters
         self.valid_words = self.load_valid_words(valid_words_file)  
