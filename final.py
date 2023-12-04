@@ -189,6 +189,9 @@ class Game(Player):
         self.print_results()
         
 def main():
+    """ 
+    Cameron 
+    """ 
     # ArgumentParser and creating instance of the game
 
 
