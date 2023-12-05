@@ -15,16 +15,14 @@ class Player:
         return f"Player(name: '{self.name}', score: {self.score})"
     
 class Game(Player):
-     
-    def __init__(self, letters, valid_words_file):
-        """ Creates Player 
-     
+     """ Created by Cameron Okolita 
 
-        ** Cameron Okolita** 
-        """ 
+     """ 
+    
+    def __init__(self, letters, valid_words_file="valid_words_file.txt"):
         super().__init__("Player 1")
         self.letters = letters
-        self.valid_words = self.load_valid_words(valid_words_file)  
+        self.valid_words = self.load_valid_words(valid_words_file)
         
     def load_valid_words(self,valid_words_file):
         """  Loads valid words from a text file
@@ -189,10 +187,7 @@ class Game(Player):
         self.print_results()
         
 def main():
-    """ 
-    Cameron 
-    """ 
-    # ArgumentParser and creating instance of the game
+    # ArgumentParser and creating an instance of the game
 
 
 
