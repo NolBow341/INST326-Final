@@ -146,11 +146,15 @@ class Game(Player):
 
         Returns:
             str: number that player placed, their name, and their score
+            
+        created by ** Matt Andrasik **
         """
-        ordered_board = sorted(self.leadership.item(), key=lambda x: x[1], reverse=True)
-        for name, score in ordered_board:
-            place += 1
-            return f"{place}. {name} : {score}" 
+        ordered_board = sorted(self.leadership_board.items(), key=lambda x: x[1], reverse=True)
+        result = ""
+        for i in range(len(ordered_board)):
+            place = i + 1
+            name, score = ordered_board[1]
+            result += f'{place}. {name} : {score}'
     
     def play_game(self):
         """ Method to play the Anagram Game.
