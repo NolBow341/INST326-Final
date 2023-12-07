@@ -15,11 +15,15 @@ class Player:
         return f"Player(name: '{self.name}', score: {self.score})"
     
 class Game(Player):
-     """ Created by Cameron Okolita 
-
-     """ 
+     
     
     def __init__(self, letters, valid_words_file="valid_words_file.txt"):
+        """ 
+        Created by Cameron Okolita 
+        Techniques: super(). and Optional Parameters 
+
+        """ 
+        
         super().__init__("Player 1")
         self.letters = letters
         self.valid_words = self.load_valid_words(valid_words_file)
