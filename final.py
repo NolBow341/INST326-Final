@@ -2,15 +2,19 @@ import random
 import argparse
 
 class Player:
-    """Creates player object. 
-    created by ** Ethan Holley **
+    """Creates player object. Created by ** Ethan Holley **
+        Attributes:
+            leadership_board (dict): dictionary for score keeping
+            name (str): name of Player
+            score (int): score of Player
+            words (list): list of words
     """
     def __init__(self,name):
         self.leadership_board = {}
         self.name = name
         self.score = 0
         self.words = []
-        
+
     def __repr__(self):
         return f"Player(name: '{self.name}', score: {self.score})"
     
@@ -195,9 +199,22 @@ class Game(Player):
         self.print_results()
         
 def main():
-    # ArgumentParser and creating an instance of the game
+    """
+        Create command line interface and instantiate Game class.
 
+        Returns: string representation of Game.
 
+        ** created by Ethan Holley **
+    """
+    parser = argparse.ArgumentParser(description='Anagram Game')
+    parser.add_argument('letters', type=str, help='Letters for the Anagram Game')
+    parser.add_argument('-w', '--wordsfile', type=str, default='valid_words.txt', help='Path to the file containing valid words')
+
+    args = parser.parse_args()
+
+    game_instance = Game(args.letters, args.wordsfile)
+    game_instance.play_game(args.letters)
+    print(str(game_instance))
 
 if __name__ == "__main__":
     game_instance = Game("","")
