@@ -112,40 +112,20 @@ class Game(Player):
         self.leadership_board[self.name] = points
         return points
     
-    def print_results(self, player1, player2):
+    def print_results(self):
         """ Prints a detailed breakdown of player 1's and player 2's list of
         words and points each word is worth. Created by ** Suhas Poturaju **
         
-        EDIT THIS FOR ONLY 1 PLAYER 
-        
-        Args:
-        
+        Side Effects:
+            prints to console the total score of a player, the list of words
+            they guessed along with how many points each word is worth
         
         """
-        for word in player1.words:
-            total1 += calculate_points(word)
-        for word in player2.words:
-            total2 += calculate_points(word)
-            
-        print(f"Player 1: {total1} pts")
-        for word in player1.words:
-            print(f"{word} - {calculate_points(word)}")
+        total = sum(self.calculate_points(word) for word in self.words)
         
-        print("\n---------------------\n")
-        
-        print(f"Player 2: {total2} pts")
-        for word in player2.words:
-            print(f"{word} - {calculate_points(word)}")
-            
-        print("\n---------------------\n")
-
-        
-        if total1 == total2:
-            print("IT'S A DRAW!")
-        elif total1 > total2:
-            print(f"PLAYER 1 WON BY {total1 - total2} PTS!")
-        else:
-            print(f"PLAYER 2 WON BY {total2 - total1} PTS!")
+        print(f"{self.name}: {total} {'pts' if total != 1 else 'pt'}")
+        for word in self.words:
+            print(f"{word} - {self.calculate_points(word)}")
         
       
       
@@ -191,7 +171,7 @@ class Game(Player):
                 points = self.calculate_points(user_input)
                 self.score += points
                 self.words.append(user_input)
-                print(f"Valid word! {user_input} is worth {points} PTS.
+                print(f"Valid word! {user_input} is worth {points} PTS. \
                       your total score is {self.score}.")
             else:
                 print("Invalid word. Try again!")
