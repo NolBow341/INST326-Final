@@ -18,10 +18,16 @@ class Player:
     def __repr__(self):
         return f"Player(name: '{self.name}', score: {self.score})"
     
+    def __str__(self):
+        return f"{self.name} - Score {self.score}, Highest Score: {self.get_highest_score()}"
+     
+    def get_highest_score(self):
+        return max([self.score] + list(self.leadership_board.values()), default=0)
+    
 class Game(Player):
      
     
-    def __init__(self, letters, valid_words_file="valid_words_file.txt"):
+    def __init__(self, letters, valid_words_file="valid_words.txt"):
         """ 
         Created by Cameron Okolita 
         Techniques: super(). and Optional Parameters 
@@ -48,7 +54,7 @@ class Game(Player):
             with open(valid_words_file, 'r', encoding='utf-8') as file:
                 return [line.strip() for line in file.readlines()]
         except FileNotFoundError:
-            print( f"Error: File {valid_words_file} not found")
+            print()
             return []
         
   
@@ -67,30 +73,12 @@ class Game(Player):
         for letter in entry_letters:
             if entry_letters.count(letter) > self.letters.count(letter):
                 return False
-        
-        if entry in self.valid_words:
-            return True
-        
-        return False
-        
-        
-    def longest_word(self): 
-        """
-    Get the longest word from a player from the list of valid words.
-
-    Returns:
-        str or None: The longest valid word found or None if no valid words.
-    
-    created by ** Cameron Okolita**
-    """
-    
-        
-        if self.valid_words:
-            longest_words = max(self.valid_words, key=lambda x: len(x[0]))
-            return longest_words[0]
-        else:
-            return None  
-    
+            
+        for letter in entry_letters:
+            if letter not in self.letters:
+                return False
+            
+        return True
     
     """
     features of our game class that allows the user to play
@@ -162,17 +150,21 @@ class Game(Player):
         print(f"Unscramble the letters: {self.letters}")
         
         while True:
-            user_input = input("Enter a word (or 'quit' to end game: )")
+            user_input = input("Enter a word (or 'quit' to end game): ")
             
-            if user_input == 'quit':
+            if user_input.lower() == 'quit':
                 break
-            
-            if self.is_entry_valid(user_input):
+            if user_input in self.words:
+                print(f"you already entered '{user_input}'. Try again.")
+            elif self.is_entry_valid(user_input):
                 points = self.calculate_points(user_input)
-                self.score += points
-                self.words.append(user_input)
-                print(f"Valid word! {user_input} is worth {points} PTS. \
-                      your total score is {self.score}.")
+                if points == 0:
+                    print("Invalid Word! Try another.")
+                else:
+                    self.score += points
+                    self.words.append(user_input)
+                    print(f"Valid Word! {user_input} is worth {points} PTS. \
+                          Your total score: {self.score}.")
             else:
                 print("Invalid word. Try again!")
         print("Game Over. Final score is:")
@@ -199,3 +191,4 @@ def main():
 if __name__ == "__main__":
     game_instance = Game("","")
     game_instance.play_game()
+    print(str(game_instance))
