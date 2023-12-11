@@ -11,23 +11,37 @@
 #### Final.py
 Player class:
 __init__ initializes the objects
+
 __repr__ formal representation of string
+
 __str__ informal representation of string
+
 get_highest_score: gets the highest score based on game played 
+
 overview of the player. allows the game to set basic requirments like name, score, and words
 magic methods are provided to return proper string formations
 
 
 Game class:
+
 how the game operates: inherits the Player class.
+
 methods include:
+
 __init__ initializes the objects
+
 leadership_board: shows the rank of the player based on the round they play
+
 load_valid_words: loads the words from a textfile in order to get points
+
 calculate points: gives points based on players input and word length
+
 is_entry_valid: assesses weather word typed is valid or not
+
 print_results: detailed breakdon of players words found and points given
+
 play_game: how the game is displayed when playing. allows user to input responses 
+
 lucky_points: chooses number from two tuples and gives bonus points if they matched 
 
 #### letter_scramble.txt
