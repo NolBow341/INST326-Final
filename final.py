@@ -131,7 +131,43 @@ class Game(Player):
             place = i + 1
             name, score = ordered_board[1]
             result += f'{place}. {name} : {score}'
-    
+    def play_game(self):
+        """ Method to play the Anagram Game.
+        
+        Args:
+            letters (str): the letters for the game
+            
+            this method initiates the Game with the provided letters and enter
+            word matches until they decide to quit. each word gives points to
+            the player and the game results are returned in the end
+        """
+        print("Welcome to Anagrams!!")
+        
+        wordlist_file = "letter_scramble.txt"
+        self.letters = random.choice(self.load_valid_words(wordlist_file))
+        
+        print(f"Unscramble the letters: {self.letters}")
+        
+        while True:
+            user_input = input("Enter a word (or 'quit' to end game): ")
+            
+            if user_input.lower() == 'quit':
+                break
+            if user_input in self.words:
+                print(f"you already entered '{user_input}'. Try again.")
+            elif self.is_entry_valid(user_input):
+                points = self.calculate_points(user_input)
+                if points == 0:
+                    print("Invalid Word! Try another.")
+                else:
+                    self.score += points
+                    self.words.append(user_input)
+                    print(f"Valid Word! {user_input} is worth {points} PTS. \
+                          Your total score: {self.score}.")
+            else:
+                print("Invalid word. Try again!")
+        print("Game Over. Final score is:")
+        self.print_results()
     
         
 def main():
