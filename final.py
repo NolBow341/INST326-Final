@@ -133,6 +133,7 @@ class Game(Player):
             result += f'{place}. {name} : {score}'
     def play_game(self):
         """ Method to play the Anagram Game.
+        * Created by: Cameron Okolita * 
         
         Args:
             letters (str): the letters for the game
@@ -140,6 +141,8 @@ class Game(Player):
             this method initiates the Game with the provided letters and enter
             word matches until they decide to quit. each word gives points to
             the player and the game results are returned in the end
+        
+        
         """
         print("Welcome to Anagrams!!")
         
