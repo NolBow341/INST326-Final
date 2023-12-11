@@ -181,7 +181,7 @@ class Game(Player):
         """
         
         
-        """
+        
         print("Welcome to Anagrams!!")
         
         wordlist_file = "letter_scramble.txt"
