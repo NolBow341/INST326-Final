@@ -55,28 +55,38 @@ list of all the valid words that can be found based on the letter scrambled comb
 
 # Attribution
 __Nolan Bowen__:
+
 Method/Function: load_valid_words and calculate_points.
-techniques demonstrated: With and Conditonal Expression
+
+Techniques demonstrated: With and Conditonal Expression
 
 __Matt Andrasik__:
-method/function: Leadership_board and is_entry_valid
-techniques demonstrated: Lambda expression and sequence unpacking
+
+Method/function: Leadership_board and is_entry_valid
+
+Techniques demonstrated: Lambda expression and sequence unpacking
 
 
 
 __Cameron Okolita__:
+
 Method/Function: play_game and __init__ from Game class.
-techniques demonstrated: super() and optional parameters
+
+Techniques demonstrated: super() and optional parameters
 
 
 __Ethan Holley__: 
+
 Method/Function: main() and Player/Game class, lucky_points
-techniques demonstrated: Argument Parser and set operations or forzensets
+
+Techniques demonstrated: Argument Parser and set operations or forzensets
 
 
 __Suhas Poturanju__:
+
 Method/Function: __repr__,__str__print,_results
-techniques demonstrated: magic methods and f-strings
+
+Techniques demonstrated: magic methods and f-strings
 
 
 
