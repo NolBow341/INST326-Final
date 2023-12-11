@@ -1,4 +1,4 @@
-# INST326-Final Anagrams wWord Game
+# INST326-Final Anagrams Word Game
 ##### created by: Nolan Bowen, Suhas Poturanju, Ethan Holley, Cameron Okolita, Matt Andrasik
 
 #### How to run the program:
