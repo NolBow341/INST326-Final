@@ -173,12 +173,12 @@ class Game(Player):
         """ Method to play the Anagram Game.
         * Created by: Cameron Okolita * 
         
-        Args:
-            letters (str): the letters for the game
-            
-            this method initiates the Game with the provided letters and enter
-            word matches until they decide to quit. each word gives points to
-            the player and the game results are returned in the end
+        Side effects:
+            Prints welcome and game instructions to the console
+            Print feedback messages for each word entered
+            Prints the final score and words played at the end of the game
+
+        """
         
         
         """
