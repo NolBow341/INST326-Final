@@ -6,9 +6,9 @@
 2. write the following: python3 (or python for windows) final.py
 3. find words from the scrambled letters and have fun!
 
-## Python Files:
+# Python Files:
 
-#### Final.py
+### Final.py
 Player class:
 __init__ initializes the objects
 
@@ -53,8 +53,7 @@ a textfile of scrambled letter combonations, these letter combonations will be c
 list of all the valid words that can be found based on the letter scrambled combonation
 
 
-
-#### Attribution
+# Attribution
 Nolan Bowen:
 Method/Function: load_valid_words and calculate_points.
 techniques demonstrated: With and Conditonal Expression
