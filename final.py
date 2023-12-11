@@ -111,6 +111,28 @@ class Game(Player):
         points = word_len * 100 if word_len >= 3 else 0
         self.leadership_board[self.name] = points
         return points
+    def lucky_points(self):
+        """ Chooses a number randomly from two identical tuples and if the numbers match in sets, 
+        player receives that number as bonus points. 
+
+        Returns:
+            int: bonus points from matching numbers or zero for no matched numbers.
+        """
+        first_points = 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000
+        fc = random.choice(first_points)
+    
+        second_points = 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000
+        sc = random.choice(second_points)
+    
+        first_choice = {fc}
+        second_choice = {sc}
+    
+        points_set_op = first_choice & second_choice
+        if points_set_op:
+            bonus_points = int(points_set_op.pop())
+        else:
+            bonus_points = 0
+        return bonus_points
     
     def print_results(self):
         """ Prints a detailed breakdown of player 1's and player 2's list of
@@ -121,12 +143,16 @@ class Game(Player):
             they guessed along with how many points each word is worth
         
         """
-        total = sum(self.calculate_points(word) for word in self.words)
+        total = sum(self.calculate_points(word) for word in self.words)  + self.lucky_points()
         
         print(f"{self.name}: {total} {'pts' if total != 1 else 'pt'}")
+
         for word in self.words:
             print(f"{word} - {self.calculate_points(word)}")
-        
+
+        bonus_points = self.lucky_points()
+        self.score = self.score + bonus_points
+        print(f'Bonus Points: {bonus_points}')
       
       
     def leadership_board(self):
