@@ -28,6 +28,7 @@ calculate points: gives points based on players input and word length
 is_entry_valid: assesses weather word typed is valid or not
 print_results: detailed breakdon of players words found and points given
 play_game: how the game is displayed when playing. allows user to input responses 
+lucky_points: chooses number from two tuples and gives bonus points if they matched 
 
 #### letter_scramble.txt
 a textfile of scrambled letter combonations, these letter combonations will be chosen at random when the code is run
