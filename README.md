@@ -10,11 +10,11 @@
 
 ### Final.py
 Player class:
-__init__ initializes the objects
+__init__ :initializes the objects
 
-__repr__ formal representation of string
+__repr__ :formal representation of string
 
-__str__ informal representation of string
+__str__ :informal representation of string
 
 __get_highest_score__: gets the highest score based on game played 
 
@@ -28,7 +28,7 @@ how the game operates: inherits the Player class.
 
 methods include:
 
-__init__ initializes the objects
+__init__ :initializes the objects
 
 __leadership_board__: shows the rank of the player based on the round they play
 
