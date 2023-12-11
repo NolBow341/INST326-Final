@@ -30,8 +30,20 @@ class Game(Player):
     def __init__(self, letters, valid_words_file="valid_words.txt"):
         """ 
         Created by Cameron Okolita 
-        Techniques: super(). and Optional Parameters 
+        Techniques: super(). and Optional Parameters
 
+         Args:
+            letters (str): A string of the initial set of letters for the player
+            valid_words_file (str, optional): The file path to a text file containing valid words with the default being "valid_words.txt" 
+
+        Raises:
+            FileNotFoundError: If the valid_words_file is not found
+            
+
+        Side effects:
+            Calls the __init__ method of the superclass
+            Initializes the 'letters' attribute 
+            Initializes the 'valid_words' attribute 
         """ 
         
         super().__init__("Player 1")
