@@ -1,5 +1,5 @@
 # INST326-Final Anagrams Word Game
-##### created by: Nolan Bowen, Suhas Poturanju, Ethan Holley, Cameron Okolita, Matt Andrasik
+##### created by: Nolan Bowen, Suhas Poturaju, Ethan Holley, Cameron Okolita, Matt Andrasik
 
 #### How to run the program:
 1. CTRL + SHIFT + ~ to open a new terminal.
